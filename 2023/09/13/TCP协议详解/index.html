@@ -5,27 +5,27 @@
 <meta property="og:site_name" content="冰糖の部落阁">
 <meta property="og:description" content="TCP简介       TCP，即Transmission Control Protocol，传输控制协议。人如其名，要对数据的传输进行一个详细的控制。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/image-20230919164323119.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001503258.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001518615.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001533631.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001549403.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001622139.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001638374.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001658355.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001717115.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001739792.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001753828.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001813358.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001833148.png">
-<meta property="og:image" content="http://qiniu2.ixxzhi.cn/images/image-20231027001900159.png">
+<meta property="og:image" content="http://qn.hackfox.cn/image-20230919164323119.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001503258.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001518615.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001533631.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001549403.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001622139.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001638374.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001658355.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001717115.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001739792.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001753828.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001813358.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001833148.png">
+<meta property="og:image" content="http://qn.hackfox.cn/images/image-20231027001900159.png">
 <meta property="article:published_time" content="2023-09-13T06:34:17.000Z">
-<meta property="article:modified_time" content="2023-10-30T15:27:25.674Z">
+<meta property="article:modified_time" content="2024-04-10T13:48:24.774Z">
 <meta property="article:author" content="冰糖小混子">
 <meta property="article:tag" content="网络协议">
 <meta property="article:tag" content="TCP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qiniu2.ixxzhi.cn/image-20230919164323119.png"><title>TCP协议详解 | 冰糖の部落阁</title><link ref="canonical" href="https://www.ixxzhi.cn/2023/09/13/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="http://qn.hackfox.cn/image-20230919164323119.png"><title>TCP协议详解 | 冰糖の部落阁</title><link ref="canonical" href="https://www.ixxzhi.cn/2023/09/13/TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: {"appId":"AKOK4JB6FU","apiKey":"afe2853f80920ee4cdb1d45209c0ecf2","indexName":"blog_ixxzhi","hits":{"per_page":10},"languages":{"inputPlaceholder":"搜索文章","hitsEmpty":"没有找到任何搜索结果：${query}","hitsStats":"找到 ${hits} 条搜索结果，耗时 ${time} 毫秒"}},
@@ -49,11 +49,11 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">冰糖の部落阁</div><div class="header-banner-info__subtitle">冰糖的笔记和随笔</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">TCP协议详解</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-09-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-10-30</span></span></div></header><div class="post-body">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">冰糖の部落阁</div><div class="header-banner-info__subtitle">冰糖的笔记和随笔</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">TCP协议详解</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-09-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-04-10</span></span></div></header><div class="post-body">
         <h1 id="TCP简介"   >
           <a href="#TCP简介" class="heading-link"><i class="fas fa-link"></i></a><a href="#TCP简介" class="headerlink" title="TCP简介"></a>TCP简介</h1>
       <p>TCP，即Transmission Control Protocol，传输控制协议。人如其名，要对数据的传输进行一个详细的控制。</p>
-<p><img src="http://qiniu2.ixxzhi.cn/image-20230919164323119.png" alt="image-20230919164323119"></p>
+<p><img src="http://qn.hackfox.cn/image-20230919164323119.png" alt="image-20230919164323119"></p>
 <span id="more"></span>
 
 <ul>
@@ -118,12 +118,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <li>应答报文：ACK这一位为1</li>
 </ul>
 <p>特殊情况：如果客户端一次性给服务器发送多条消息，那么浏览器的应答就会产生歧义</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001503258.png" alt="image-20231027001503258"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001503258.png" alt="image-20231027001503258"></p>
 <p>在网络上有一种特殊情况，“后发先至”，后发的请求可能先到</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001518615.png" alt="image-20231027001518615"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001518615.png" alt="image-20231027001518615"></p>
 <p>因此就会产生上述两种情况。</p>
 <p>为了解决上述问题，就可以<strong>针对请求和应答报文进行编号！</strong></p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001533631.png" alt="image-20231027001533631"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001533631.png" alt="image-20231027001533631"></p>
 <p>针对编号就可以很明确的分出是哪个请求的应答。即使出现“后发先至”的情况也没有问题。</p>
 <p>而这个编号就对应TCP报文结构中的32位序号和32位确认序号。</p>
 <ul>
@@ -131,7 +131,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <li>32位确认序号：针对应答（ACK）报文进行编号</li>
 </ul>
 <p>注：TCP报文头只能存一个序号，存的是最后一个字节的序号，是根据报文长度来算的</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001549403.png" alt="image-20231027001549403"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001549403.png" alt="image-20231027001549403"></p>
 <p>上述数据的传输过程也不是一帆风顺的，可能出现丢包，如果丢包，这就需要TCP的<strong>超时重传机制</strong>了。</p>
 
         <h1 id="超时重传"   >
@@ -162,9 +162,9 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
           <a href="#三次握手" class="heading-link"><i class="fas fa-link"></i></a><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h1>
       <p>三次握手是在TCP协议中建立一个可靠的连接所使用的一种机制，它由发送方和接收方之间进行的三次通信组成，用于确保双方都愿意建立连接，并同步各自的初始序列号。</p>
 <p>三次握手类似于打电话：</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001622139.png" alt="image-20231027001622139"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001622139.png" alt="image-20231027001622139"></p>
 <p>三次握手的过程本质上是四次数据的交互，只是中间两条数据可以合并到一起</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001638374.png" alt="image-20231027001638374"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001638374.png" alt="image-20231027001638374"></p>
 <p>三次握手的步骤：</p>
 <ol>
 <li>第一次握手（SYN）：发送方向接收方发送一个带有SYN标志的数据包（SYN包），请求建立连接。发送方会随机选择一个初始序列号，并将它放在SYN包中的序列号字段中发送给接收方。</li>
@@ -221,7 +221,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <li>第三次挥手（FIN）：接收方向发送方发送一个带有FIN标志的数据包（FIN包），表示接收方也希望关闭连接。接收方停止发送数据，但仍然可以接受数据。</li>
 <li>第四次挥手（ACK）：发送方收到FIN包后，向接收方发送一个带有确认号（ACK）的数据包，表示已接收到接收方的关闭请求。发送方不再发送数据，也不再接收数据。</li>
 </ol>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001658355.png" alt="image-20231027001658355"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001658355.png" alt="image-20231027001658355"></p>
 <p>两个重要的TCP状态：</p>
 <ul>
 <li>CLOSE_WAIT：表示TCP连接的一方已经收到了对方的连接终止请求（FIN包），并发送了确认（ACK）包。在CLOSE_WAIT状态下，接收方等待应用层处理完数据后的连接关闭。</li>
@@ -235,21 +235,21 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <p>滑动窗口是在数据传输中用于流量控制和可靠传输的一种机制。它允许发送方在不等待接收方确认的情况下连续发送多个数据包，提高了传输效率。</p>
 </blockquote>
 <p>在不引入滑动窗口的情况下：</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001717115.png" alt="image-20231027001717115"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001717115.png" alt="image-20231027001717115"></p>
 <p>发送方和接收方一应一答，可靠性确实能得到保证，但其实大部分时间都消耗在了等待ACK上了。</p>
 <p><strong>因此滑动窗口就是每次批量发送一波消息，然后再等一波ACK，再发一波消息</strong>：</p>
 <p>如下图所示：</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001739792.png" alt="image-20231027001739792"></p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001753828.png" alt="image-20231027001753828"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001739792.png" alt="image-20231027001739792"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001753828.png" alt="image-20231027001753828"></p>
 <p>上图中窗口大小是3000，主机A发送了3000字节的数据，主机B需要确认应答，如果第一个ACK成功返回主机A，说明1~1000的数据发送成功，滑动窗口就会向后移动，并发送下一条数据，保证窗口中的数据都是需要确认应答的，或者是没发出去的。</p>
 <p>上述过程都是正常情况下，<strong>但也发生丢包或者乱序的情况</strong></p>
 <ul>
 <li><p>情况1：数据包到了，但是ACK丢了</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001813358.png" alt="image-20231027001813358"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001813358.png" alt="image-20231027001813358"></p>
 <p>如上图第二个ACK丢了，不用做任何处理也没关系，对于可靠传输没有任何影响，右边ack的数字，1001表示1001之前的数据都收到了，2001表示2001之前的数据都收到了，3001表示3001之前的数据都收到了（后者包括前者）。</p>
 </li>
 <li><p>情况2：数据包丢了</p>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001833148.png" alt="image-20231027001833148"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001833148.png" alt="image-20231027001833148"></p>
 <p>假设1000的数据包丢了，在1000的数据开始丢的时候，主机A并不知道丢了数据，会继续往下发送数据。</p>
 <p>主机B会在收到0<del>1000的数据前的应答中返回1001，主机A在接收到重复的几次确认后，会重新发送0</del>1000的数据，当主机B收到1<del>1000的数据后，会把应答数据变成最新的，例如在主机A重发0</del>1000的数据前有发了3000<del>6000的数据，并没有丢包，在收到0</del>1000的数据后，下一次应答的数字就是6001。</p>
 
@@ -292,7 +292,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
       <blockquote>
 <p>延时应答是指在TCP通信中，当一方发送数据给另一方时，接收方需要向发送方发送一个确认应答，表示已经成功接收到数据。延时应答是指接收方在接收到数据后，不立即发送确认应答，而是等待一段时间后再发送确认应答</p>
 </blockquote>
-<p><img src="http://qiniu2.ixxzhi.cn/images/image-20231027001900159.png" alt="image-20231027001900159"></p>
+<p><img src="http://qn.hackfox.cn/images/image-20231027001900159.png" alt="image-20231027001900159"></p>
 <p>接收方在收到发送方的数据后，不会立即返回应答，而是接收方先进行一部分数据的处理然后再返回应答给发送方</p>
 <p>延时应答的主要作用是为了优化网络传输性能。TCP协议使用了滑动窗口机制，发送方会根据接收方发送的确认应答来确定下一次发送的数据量。如果接收方立即发送确认应答，那么发送方会立即发送下一批数据，造成网络拥塞。而延时应答可以让发送方在一定时间内累积多个数据包，然后一次性发送确认应答，有效减少了网络流量。</p>
 </li>
@@ -363,7 +363,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
           延时应答</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8D%8E%E5%B8%A6%E5%BA%94%E7%AD%94"><span class="toc-number">11.</span> <span class="toc-text">
           捎带应答</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-number">12.</span> <span class="toc-text">
           面向字节流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">13.</span> <span class="toc-text">
-          TCP的连接异常处理</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/avatar.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">冰糖小混子</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">34</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">8</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>冰糖小混子</span><span class="footer__devider">|</span><span><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备20002846号</a></span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.3.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"></div><div class="search-results"><div id="algolia-hits"></div></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><script>window.addEventListener('DOMContentLoaded', function () {
+          TCP的连接异常处理</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/avatar.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">冰糖小混子</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">37</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">27</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>冰糖小混子</span><span class="footer__devider">|</span><span><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蒙ICP备20002846号</a></span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.3.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"></div><div class="search-results"><div id="algolia-hits"></div></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><script>window.addEventListener('DOMContentLoaded', function () {
   $('.header-nav-search').on('click', function (e) {
     e.stopPropagation();
 
